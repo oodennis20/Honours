@@ -1,0 +1,38 @@
+{%extends "registration/base.html"%} {% load bootstrap4 %}
+{% block content %}
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<div class="container-fluid mt-5 p-5">
+  <header style="font-size: 40px;"> HONOURS </a></header>
+  <div class="row">
+    <div class="col-lg-6 p-5">
+      <img src="https://www.google.com/search?q=stars&client=opera&hs=GQu&sxsrf=ACYBGNSOgeJ9WL5YlO197c2ME1-BUcytaQ:1578650619705&tbm=isch&source=iu&ictx=1&fir=ufCaq4AttxIVZM%253A%252CXXxPjxbiad5szM%252C%252Fm%252F06ngk&vet=1&usg=AI4_-kRZ0QTE_JZX5-oUAqazP6tl71DJhg&sa=X&ved=2ahUKEwjxwKXr4_jmAhWaEMAKHXh3DT8Q_B0wF3oECAoQAw#imgrc=ufCaq4AttxIVZM:" alt=""
+        class="img-fluid">
+    </div>
+    <div class="col-lg-6 p-5">
+      <h2>Sign up</h2>
+      <form method="post">
+      {% csrf_token %}
+        {% for field in form %}
+        <p>
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+          <small style="display: none">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+        {% endfor %}
+        <div class="form-group">
+          <input type="submit" class="btn btn-outline-primary btn-sm" value="Sign Up">
+          <p class="text">Do you already have an account?<a class="btn btn-outline-primary btn-sm" href="/accounts/login/">Sign In</a></p>
+        </div>
+        <input type="hidden" name="next" value="{{next}}">
+
+      </form>
+
+    </div>
+
+  </div>
+  {% endblock %}
