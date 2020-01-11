@@ -1,0 +1,33 @@
+{%extends "registration/base.html"%}
+{% load bootstrap4 %}
+{% block content %}
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<div class="container-fluid mt-5 p-5">
+  <header style="font-size: 40px;"> HONOURS </a></header>
+  <div class="row">
+        <div class="col-lg-6 p-5">
+      <img src="https://www.google.com/search?q=stars&client=opera&hs=GQu&sxsrf=ACYBGNSOgeJ9WL5YlO197c2ME1-BUcytaQ:1578650619705&tbm=isch&source=iu&ictx=1&fir=ufCaq4AttxIVZM%253A%252CXXxPjxbiad5szM%252C%252Fm%252F06ngk&vet=1&usg=AI4_-kRZ0QTE_JZX5-oUAqazP6tl71DJhg&sa=X&ved=2ahUKEwjxwKXr4_jmAhWaEMAKHXh3DT8Q_B0wF3oECAoQAw#imgrc=ufCaq4AttxIVZM:" alt="" class="img-fluid">
+    </div>
+    <div class="col-lg-6 p-5">
+      {% if form.errors %}
+      <p>Some information might be incorrect</p>
+      {% endif %}
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Sign In</h3>
+        </div>
+        <div class="card-body">
+          <form action="/accounts/login/" method="post">
+            {% csrf_token %} {% bootstrap_form form %}
+            <div class="form-group">
+              <input type="submit" class="btn btn-outline-primary btn-sm" value="login">
+            </div>
+            <input type="hidden" name="next" value="{{next}}">
+          </form>
+        </div>
+        <p class="text-center">Don't have an account?<a class="btn btn-outline-primary btn-sm" href="/signup/">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

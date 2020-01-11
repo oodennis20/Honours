@@ -19,3 +19,11 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, 'signup.html', {'form': form})
+
+@login_required(login_url="/accounts/login/")
+def logout_request(request):
+    '''
+    view function renders home page once logout
+    '''
+    logout(request)
+    return redirect('home')

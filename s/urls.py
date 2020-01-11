@@ -5,7 +5,9 @@ from django.conf.urls.static import static
 from django.urls import path
 
 urlpatterns = [
-url('^signup/$', views.signup, name='signup'),
+url(r'^signup/$', views.signup, name='signup'),
+url(r'^logout/$',views.logout_request,name="logout"),   
+
 ]
 
 if settings.DEBUG:
