@@ -20,7 +20,6 @@ def signup(request):
         form = SignupForm()
     return render(request, 'signup.html', {'form': form})
 
-@login_required(login_url='/accounts/login/')
 def home(request):
 
     message ='See me?'

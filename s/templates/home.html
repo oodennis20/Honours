@@ -1,33 +1,15 @@
+{%extends 'base.html'%}
+{% block content %}
+{{ block.super}}
 {% load bootstrap4 %}
-{% load static%}
-<!DOCTYPE html>
-<html>
 
-<head>
-  <meta charset="utf-8">
+<br>
+<br>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
-  {% if title %}
-  <title>Honours - {{title}}</title>
-  {% else %}
-  <title> Honours </title>
-  {% endif %}
 
-<script data-require="jquery@*" data-semver="2.2.0" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  {% block styles %}
-  {% bootstrap_css %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/baseimages.css' %}">
-  {% endblock %}
-</head>
 
-<body>
-  {% include "navbar.html" %}
-  {% block content %}{%endblock%}
 
-  {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    {% bootstrap_javascript %}
-  {% endblock %}
-</body>
 
-</html>
+
+{% endblock %}
