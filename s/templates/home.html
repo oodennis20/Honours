@@ -26,6 +26,7 @@
                             style="height:40px;margin-top:5px;margin-bottom:5px;">
                         <a href="/profile/{{user.id}}">
                             <label>{{project.posted_by}}</label></a>
+                        <h5>{{ project.reviews.count }}, {{ project.design_rating | floatformat }}, {{ project.usability_rating | floatformat }}, {{ project.content_rating | floatformat }}</h5>
                     </div>
                     <img src="{{project.project_image.cdn_url}}" class="card-img-top"
                         data-target="#extraModal{{project.id}}" data-toggle="modal">

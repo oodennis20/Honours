@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db.models import Avg
-
+import numpy as np
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
@@ -48,6 +48,18 @@ class Project(models.Model):
         projects = Project.objects.all()
         return projects
 
+    def design_rating(self):
+        all_designs =list( map(lambda x: x.design, self.reviews.all()))
+        return np.mean(all_designs)
+
+    def usability_rating(self):
+        all_usability =list( map(lambda x: x.usability, self.reviews.all()))
+        return np.mean(all_usability)
+
+    def content_rating(self):
+        all_content =list( map(lambda x: x.content, self.reviews.all()))
+        return np.mean(all_content)
+
 class Reviews(models.Model):
     RATING_CHOICES = (
         (1, '1'),
@@ -67,7 +79,7 @@ class Reviews(models.Model):
     usability = models.IntegerField(choices=RATING_CHOICES,null=True)
     content = models.IntegerField(choices=RATING_CHOICES,null=True)
     comment = models.CharField(max_length=200,null=True)
-    average = models.PositiveIntegerField(default=0)
+    
 
     @classmethod
     def get_reviews(cls):
