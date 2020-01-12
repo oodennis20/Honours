@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^new/profile$', views.add_profile, name='add_profile'),
     url(r'^upload/', views.upload_project, name='upload'),
     url(r'^review/(?P<pk>\d+)',views.add_review,name='review'),
+    url(r'^api/profiles/$', views.ProfileList.as_view()),
+    url(r'^api/projects/$', views.ProjectList.as_view())
 
 ]
 

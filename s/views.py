@@ -8,6 +8,9 @@ from django.contrib.auth import login, authenticate
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import *
 
 def signup(request):
     if request.method == 'POST':
@@ -105,3 +108,15 @@ def add_review(request,pk):
     else:
         form = ReviewForm()
         return render(request,'review.html',{"user":current_user,"review_form":form})
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profiles = Profile.objects.all()
+        serializers = ProfileSerializer(all_profiles, many=True)
+        return Response(serializers.data)
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_projects = Project.objects.all()
+        serializers = ProjectSerializer(all_projects, many=True)
+        return Response(serializers.data)
