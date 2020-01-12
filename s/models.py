@@ -29,6 +29,11 @@ class Profile(models.Model):
         profile = Profile.objects.all()
 
         return profile
+    
+    @classmethod
+    def find_profile(cls,search_term):
+        profile = Profile.objects.filter(user__username__icontains=search_term)
+        return profile
 
 class Project(models.Model):
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE,null=True)

@@ -165,6 +165,20 @@ class ProfileDescription(APIView):
         profile.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+    current_user = request.user
+    profile = Profile.get_profile()
+    if 'username' in request.GET and request.GET["username"]:
+        search_term = request.GET.get("username")
+        searched_name = Profile.find_profile(search_term)
+        message = search_term
+
+        return render(request,'search.html',{"message":message, "profiles":profile, "user":current_user, "username":searched_name})
+    else:
+        message = "You haven't searched for any user"
+        return render(request,'search.html',{"message":message})
+
 class ProjectList(APIView):
     
     def get(self, request, format=None):
