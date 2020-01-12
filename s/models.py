@@ -3,6 +3,7 @@ from pyuploadcare.dj.models import ImageField
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.db.models import Avg
 
 # Create your models here.
 class Profile(models.Model):
@@ -66,4 +67,7 @@ class Reviews(models.Model):
     def get_reviews(cls):
         reviews = Reviews.objects.all()
         return reviews
-
+    @classmethod
+    def get_average(cls):
+        usability =Reviews.objects.all().aggregate(Avg('usability'))
+        return usability
