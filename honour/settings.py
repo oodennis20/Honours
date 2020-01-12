@@ -55,6 +55,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     's',
     'tinymce',
     'pyuploadcare.dj',
