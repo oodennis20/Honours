@@ -56,6 +56,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 INSTALLED_APPS = [
     's',
+    'tinymce',
+    'pyuploadcare.dj',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -94,6 +96,11 @@ TEMPLATES = [
         },
     },
 ]
+
+UPLOADCARE = {
+    'pub_key': 'b3b631fd1c4393d31795',
+    'secret': '787678858a63d855993d',
+}
 
 WSGI_APPLICATION = 'honour.wsgi.application'
 
