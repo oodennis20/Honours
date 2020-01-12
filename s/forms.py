@@ -9,6 +9,8 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
+INTEGER_CHOICES= [tuple([x,x]) for x in range(1,10)]
+
 class NewProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
@@ -22,4 +24,8 @@ class UploadForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Reviews
-        exclude =['project','juror', 'average']
+        design= forms.IntegerField(label="Design Rating")
+        usability = forms.IntegerField(label="Usability Rating")
+        content = forms.IntegerField(label="Content Rating")
+        widget=forms.Select(choices=INTEGER_CHOICES)
+        exclude =['project','juror','comment']

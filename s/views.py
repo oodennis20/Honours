@@ -27,7 +27,7 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def home(request):
-    projects = Project.get_projects()
+    projects = Project.get_project()
     reviews = Reviews.get_reviews()
     profile = Profile.get_profile()
 
