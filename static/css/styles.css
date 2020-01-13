@@ -103,3 +103,12 @@ body{
     cursor: pointer;
     border-radius: 16px;
 }
+section {
+    background-color: yellow;
+    padding: 20px;
+    display: none;
+}
+
+span:hover + section {
+    display: block;
+}
