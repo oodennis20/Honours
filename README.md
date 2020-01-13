@@ -1,5 +1,7 @@
 # Honours
 
+![HONOURS](/static/img/md.png)
+
 ## Built By [Dennis](https://github.com/oodennis20/)
 
 ## Description
