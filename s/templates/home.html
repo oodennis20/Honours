@@ -50,7 +50,7 @@
               {%endfor%}
 
               {{form.media}}
-
+              <hr>
               <form action="{%url 'review' pk=project.id%}" method="post" enctype="multipart/form-data" id="sema">
                 {%csrf_token%}
                 <table>

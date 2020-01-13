@@ -29,11 +29,6 @@ class Profile(models.Model):
         profile = Profile.objects.all()
 
         return profile
-    
-    @classmethod
-    def find_profile(cls,search_term):
-        profile = Profile.objects.filter(user__username__icontains=search_term)
-        return profile
 
 class Project(models.Model):
     posted_by = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
@@ -47,6 +42,11 @@ class Project(models.Model):
     def get_project(cls):
         projects = Project.objects.all()
         return projects
+
+    @classmethod
+    def find_project(cls,search_term):
+        project = Project.objects.filter(title__icontains=search_term)
+        return project
 
     def design_rating(self):
         all_designs =list( map(lambda x: x.design, self.reviews.all()))
@@ -85,7 +85,7 @@ class Reviews(models.Model):
     def get_reviews(cls):
         reviews = Reviews.objects.all()
         return reviews
-    @classmethod
-    def get_average(cls):
-        usability =Reviews.objects.all().aggregate(Avg('usability'))
-        return usability
+    # @classmethod
+    # def get_average(cls):
+    #     usability =Reviews.objects.all().aggregate(Avg('usability'))
+    #     return usability
